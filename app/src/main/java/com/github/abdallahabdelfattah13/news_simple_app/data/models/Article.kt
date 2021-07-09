@@ -1,4 +1,4 @@
-package com.github.abdallahabdelfattah13.news_simple_app.remote.news.models
+package com.github.abdallahabdelfattah13.news_simple_app.data.models
 
 import java.util.*
 

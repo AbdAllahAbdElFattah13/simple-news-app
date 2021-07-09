@@ -1,12 +1,13 @@
 package com.github.abdallahabdelfattah13.news_simple_app.remote.news
 
-import com.github.abdallahabdelfattah13.news_simple_app.remote.news.models.Article
+import com.github.abdallahabdelfattah13.news_simple_app.data.models.Article
 import com.github.abdallahabdelfattah13.news_simple_app.remote.news.models.NewsArticlesResponse
 import com.github.abdallahabdelfattah13.news_simple_app.remote.news.news_client.ClientBasedNewsService
 import com.kwabenaberko.newsapilib.NewsApiClient
 import com.kwabenaberko.newsapilib.models.Source
 import com.kwabenaberko.newsapilib.models.request.EverythingRequest
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse
+import org.junit.Assert
 import org.junit.Test
 import org.mockito.kotlin.any
 import org.mockito.kotlin.argThat
@@ -15,6 +16,7 @@ import org.mockito.kotlin.whenever
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.ceil
 
 class ClientBasedNewsServiceTest {
 
@@ -97,6 +99,16 @@ class ClientBasedNewsServiceTest {
             .assertNotComplete()
             .assertFailure(error::class.java)
             .assertError(error)
+    }
+
+    @Test
+    fun f() {
+        val total = 14592
+        val page_size = 30
+
+        val final_page = ceil(total.toDouble() / page_size).toInt()
+
+        Assert.assertEquals(487, final_page)
     }
 
     private fun createClientArticle(

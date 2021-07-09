@@ -1,6 +1,6 @@
 package com.github.abdallahabdelfattah13.news_simple_app.remote.news.news_client
 
-import com.github.abdallahabdelfattah13.news_simple_app.remote.news.models.Article
+import com.github.abdallahabdelfattah13.news_simple_app.data.models.Article
 import com.github.abdallahabdelfattah13.news_simple_app.remote.news.models.NewsArticlesResponse
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse
 import java.text.SimpleDateFormat
