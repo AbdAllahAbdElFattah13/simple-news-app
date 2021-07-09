@@ -13,7 +13,6 @@ import io.reactivex.SingleOnSubscribe
 import io.reactivex.internal.schedulers.IoScheduler
 import kotlin.math.ceil
 
-//AbdAllah: missing test cases for now
 class NewsPagingSource(
     private val newsService: NewsService,
     private val ioScheduler: Scheduler,
@@ -25,7 +24,8 @@ class NewsPagingSource(
 
         val currentPage = params.key ?: NewsConstants.FIRST_PAGE_INDEX
 
-        return newsService.requestNews(q, currentPage, NewsConstants.PAGE_SIZE)
+        return newsService.
+        requestNews(q, currentPage, NewsConstants.PAGE_SIZE)
             .map {
                 toLoadPage(
                     it, currentPage, params.loadSize,
@@ -44,36 +44,4 @@ class NewsPagingSource(
         }
     }
 
-    private fun toLoadPage(
-        response: NewsArticlesResponse,
-        currentPage: Int,
-        currentLoadSize: Int,
-        firstPageIndex: Int,
-        pageSize: Int
-    ): LoadResult<Int, Article> {
-        val maxPageNumber = getMaxPageNumber(response.totalResultsCount, pageSize)
-
-        val previousPage = if (currentPage == firstPageIndex) null else currentPage - 1
-        val nextPage =
-            if (currentPage >= maxPageNumber) null else currentPage + (currentLoadSize / pageSize)
-
-        return LoadResult.Page(
-            prevKey = previousPage,
-            nextKey = nextPage,
-            data = response.articles
-        )
-    }
-
-    private fun toLoadError(
-        throwable: Throwable
-    ): LoadResult<Int, Article> {
-        return LoadResult.Error(throwable)
-    }
-
-    private fun getMaxPageNumber(
-        totalResultsCount: Int,
-        pageSize: Int
-    ): Int {
-        return ceil(totalResultsCount.toDouble() / pageSize).toInt()
-    }
 }

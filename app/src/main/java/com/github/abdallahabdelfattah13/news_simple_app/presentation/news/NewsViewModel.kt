@@ -8,6 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.rxjava2.cachedIn
 import com.github.abdallahabdelfattah13.news_simple_app.data.models.Article
 import com.github.abdallahabdelfattah13.news_simple_app.data.news.NewsRepository
+import io.reactivex.Flowable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -34,6 +35,11 @@ class NewsViewModel(
             .subscribe {
                 _state.value = it
             }
+    }
+
+    @ExperimentalCoroutinesApi
+    fun searchForQ2(q: String): Flowable<PagingData<Article>> {
+        return newsRepository.searchNews(q).cachedIn(viewModelScope)
     }
 
     override fun onCleared() {

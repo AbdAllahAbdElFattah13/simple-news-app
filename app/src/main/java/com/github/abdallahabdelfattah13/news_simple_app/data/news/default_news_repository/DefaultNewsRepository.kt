@@ -12,7 +12,6 @@ import io.reactivex.Flowable
 import io.reactivex.Scheduler
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-//AbdAllah: missing TCs
 class DefaultNewsRepository(
     private val newsService: NewsService,
     private val ioScheduler: Scheduler
