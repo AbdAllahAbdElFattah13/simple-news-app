@@ -80,7 +80,10 @@ dependencies {
     implementation "com.github.KwabenBerko:News-API-Java:$newsClientVersion"
     //endregion
 
+    //region testing
     testImplementation "junit:junit:$jUnitVersion"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidTextExtVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+    //endregion
 }
