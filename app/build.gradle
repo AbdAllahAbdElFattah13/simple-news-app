@@ -68,6 +68,7 @@ dependencies {
     //region reactive
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rxAndroidBindingsVersion"
     //endregion
 
     //region retrofit
@@ -84,6 +85,8 @@ dependencies {
     //region testing
     testImplementation "junit:junit:$jUnitVersion"
     testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoVersion"
+    testImplementation "androidx.arch.core:core-testing:$archVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
     androidTestImplementation "androidx.test.ext:junit:$androidTextExtVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
     //endregion

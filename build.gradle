@@ -47,6 +47,7 @@ ext {
     coroutines = '1.5.0-native-mt'
     rxJavaVersion = '2.2.12'
     rxAndroidVersion = '2.1.1'
+    rxAndroidBindingsVersion = '2.2.0'
     newsClientVersion = '1.0.0'
     mockitoVersion = '3.1.0'
     navVersion = '2.3.5'
