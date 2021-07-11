@@ -1,6 +1,6 @@
 package com.github.abdallahabdelfattah13.news_simple_app.remote.news.news_client
 
-import com.github.abdallahabdelfattah13.news_simple_app.remote.news.models.Article
+import com.github.abdallahabdelfattah13.news_simple_app.data.models.Article
 import com.github.abdallahabdelfattah13.news_simple_app.remote.news.models.NewsArticlesResponse
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse
 import java.text.SimpleDateFormat
@@ -21,14 +21,14 @@ fun ArticleResponse.toNewsArticleResponse(): NewsArticlesResponse {
 
 private fun com.kwabenaberko.newsapilib.models.Article.toArticle(): Article {
     return Article(
-        source = this.source.name,
-        author = this.author,
-        title = this.title,
-        description = this.description,
-        articleUrl = this.url,
-        imageUrl = this.urlToImage,
+        source = this.source.name ?: "",
+        author = this.author ?: "",
+        title = this.title ?: "",
+        description = this.description ?: "",
+        articleUrl = this.url ?: "",
+        imageUrl = this.urlToImage ?: "",
         date = this.publishedAt.toDate(),
-        content = this.description
+        content = this.description ?: ""
     )
 }
 

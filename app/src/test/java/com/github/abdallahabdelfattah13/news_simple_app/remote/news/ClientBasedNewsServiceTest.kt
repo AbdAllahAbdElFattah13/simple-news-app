@@ -1,10 +1,9 @@
 package com.github.abdallahabdelfattah13.news_simple_app.remote.news
 
-import com.github.abdallahabdelfattah13.news_simple_app.remote.news.models.Article
+import com.github.abdallahabdelfattah13.news_simple_app.TestData
 import com.github.abdallahabdelfattah13.news_simple_app.remote.news.models.NewsArticlesResponse
 import com.github.abdallahabdelfattah13.news_simple_app.remote.news.news_client.ClientBasedNewsService
 import com.kwabenaberko.newsapilib.NewsApiClient
-import com.kwabenaberko.newsapilib.models.Source
 import com.kwabenaberko.newsapilib.models.request.EverythingRequest
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse
 import org.junit.Test
@@ -13,20 +12,9 @@ import org.mockito.kotlin.argThat
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ClientBasedNewsServiceTest {
 
-    private val source = "a-source"
-    private val author = "author-name"
-    private val title = "a-title"
-    private val description = "some-long-description"
-    private val url = "www.example.com/article1"
-    private val urlToImage = "www.example.com/article1/image1"
-    private val publishedAt = "2021-06-12T06:14:00Z"
-    private val publishedAtDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
-        .parse(publishedAt)!!
 
     @Test
     fun `requestNews - success - returns single with data`() {
@@ -40,12 +28,12 @@ class ClientBasedNewsServiceTest {
             .apply {
                 this.status = status
                 this.totalResults = totalCount
-                this.articles = listOf(createClientArticle())
+                this.articles = listOf(TestData.createClientArticle())
             }
         val expectedResponse = NewsArticlesResponse(
             status = status,
             totalResultsCount = totalCount,
-            articles = listOf(createNewsArical())
+            articles = listOf(TestData.createNewsArticle())
         )
 
         val client: NewsApiClient = mock()
@@ -97,46 +85,5 @@ class ClientBasedNewsServiceTest {
             .assertNotComplete()
             .assertFailure(error::class.java)
             .assertError(error)
-    }
-
-    private fun createClientArticle(
-        source: String = this.source,
-        author: String = this.author,
-        title: String = this.title,
-        description: String = this.description,
-        url: String = this.url,
-        urlToImage: String = this.urlToImage,
-        publishedAt: String = this.publishedAt
-    ): com.kwabenaberko.newsapilib.models.Article {
-        return com.kwabenaberko.newsapilib.models.Article().apply {
-            this.author = author
-            this.source = Source().apply { this.name = source }
-            this.title = title
-            this.description = description
-            this.publishedAt = publishedAt
-            this.url = url
-            this.urlToImage = urlToImage
-        }
-    }
-
-    private fun createNewsArical(
-        source: String = this.source,
-        author: String = this.author,
-        title: String = this.title,
-        description: String = this.description,
-        url: String = this.url,
-        urlToImage: String = this.urlToImage,
-        publishedAtDate: Date = this.publishedAtDate
-    ): Article {
-        return Article(
-            source = source,
-            author = author,
-            title = title,
-            description = description,
-            articleUrl = url,
-            imageUrl = urlToImage,
-            date = publishedAtDate,
-            content = description
-        )
     }
 }
