@@ -1,4 +1,4 @@
-package com.github.abdallahabdelfattah13.news_simple_app.ui.news.adapter
+package com.github.abdallahabdelfattah13.news_simple_app.ui.news.listing.adapter
 
 import android.view.View
 import android.widget.ImageView
@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.abdallahabdelfattah13.news_simple_app.R
 import com.github.abdallahabdelfattah13.news_simple_app.data.models.Article
 import com.github.abdallahabdelfattah13.news_simple_app.ui.image_loader.ImageLoader
+import com.github.abdallahabdelfattah13.news_simple_app.ui.news.listing.NewsSingleItemActions
 
 class ArticleViewHolder(
+    private val actions: NewsSingleItemActions,
     private val imageLoader: ImageLoader,
     itemView: View
 ) :
     RecyclerView.ViewHolder(itemView) {
+
+    private var article: Article? = null
 
     private val newsItemImageIv: ImageView by lazy {
         itemView.findViewById(R.id.news_item_iv)
@@ -27,7 +31,14 @@ class ArticleViewHolder(
         itemView.findViewById(R.id.news_item_author_and_date_tv)
     }
 
+    init {
+        itemView.setOnClickListener {
+            article?.let { actions.onNewsItemClick(it) }
+        }
+    }
+
     fun bind(article: Article) {
+        this.article = article
         imageLoader.loadImageInto(article.imageUrl, newsItemImageIv)
         newsItemTitleTv.text = article.title
         newsItemSourceTv.text = article.source

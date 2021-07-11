@@ -1,4 +1,4 @@
-package com.github.abdallahabdelfattah13.news_simple_app.ui.news.adapter
+package com.github.abdallahabdelfattah13.news_simple_app.ui.news.listing.adapter
 
 import com.github.abdallahabdelfattah13.news_simple_app.data.models.Article
 import java.text.SimpleDateFormat

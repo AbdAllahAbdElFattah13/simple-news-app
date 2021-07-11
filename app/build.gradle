@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs'
 }
 
 Properties properties = new Properties()
@@ -80,12 +81,14 @@ dependencies {
 
     //region news client
     implementation "com.github.KwabenBerko:News-API-Java:$newsClientVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //endregion
 
     //region testing
     testImplementation "junit:junit:$jUnitVersion"
     testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoVersion"
     testImplementation "androidx.arch.core:core-testing:$archVersion"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2'
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
     androidTestImplementation "androidx.test.ext:junit:$androidTextExtVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"

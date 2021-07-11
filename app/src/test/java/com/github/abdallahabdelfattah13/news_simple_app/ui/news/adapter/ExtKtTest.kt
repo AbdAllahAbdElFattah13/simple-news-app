@@ -1,6 +1,8 @@
 package com.github.abdallahabdelfattah13.news_simple_app.ui.news.adapter
 
 import com.github.abdallahabdelfattah13.news_simple_app.TestData
+import com.github.abdallahabdelfattah13.news_simple_app.ui.news.listing.adapter.formatArticleDate
+import com.github.abdallahabdelfattah13.news_simple_app.ui.news.listing.adapter.formatAuthorName
 import org.junit.Assert
 import org.junit.Test
 import java.text.SimpleDateFormat

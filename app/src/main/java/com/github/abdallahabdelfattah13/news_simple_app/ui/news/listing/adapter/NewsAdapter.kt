@@ -1,4 +1,4 @@
-package com.github.abdallahabdelfattah13.news_simple_app.ui.news.adapter
+package com.github.abdallahabdelfattah13.news_simple_app.ui.news.listing.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import com.github.abdallahabdelfattah13.news_simple_app.R
 import com.github.abdallahabdelfattah13.news_simple_app.data.models.Article
 import com.github.abdallahabdelfattah13.news_simple_app.ui.image_loader.ImageLoader
+import com.github.abdallahabdelfattah13.news_simple_app.ui.news.listing.NewsSingleItemActions
 
 class NewsAdapter(
+    private val actions: NewsSingleItemActions,
     private val imageLoader: ImageLoader
 ) : PagingDataAdapter<Article, ArticleViewHolder>(
     object : DiffUtil.ItemCallback<Article>() {
@@ -25,6 +27,7 @@ class NewsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         return ArticleViewHolder(
+            actions,
             imageLoader,
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.news_item, parent, false),
