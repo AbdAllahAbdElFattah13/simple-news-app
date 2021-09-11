@@ -1,6 +1,9 @@
 # simple-news-app
 A simple news app allows searhcing for news given a search term.
 
+# Demo
+[Demo video](https://drive.google.com/file/d/18pY77TeUusy1Hjitj-DJp3vsKMxjvVlO/view?usp=sharing)
+
 # Setup
 To be able to build this app locally, you need to have API key from [newsapi.org](https://newsapi.org/). To include the API key in the project follow the steps:
 
